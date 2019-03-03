@@ -15,14 +15,14 @@ hashSchema.plugin(mongooseTimestamp)
 //HASHING PASSWORD
 async function doHash(next) {
     try {
-        var password = this.getUpdate().$set.hash;
-        this.getUpdate().$set.hash = await bcrypt.hash(password, 10);
+        var password = this.getUpdate().hash;
+        this.update({ hash: bcrypt.hashSync(password, 10) });
         next();
     } catch (e) {
         next(e);
     }
 }
-hashSchema.pre('update', doHash)
+hashSchema.pre('updateOne', doHash)
 hashSchema.pre('findOneAndUpdate', doHash)
 
 

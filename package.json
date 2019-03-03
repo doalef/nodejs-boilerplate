@@ -4,7 +4,8 @@
   "description": "A nodejs boilerplate, so that we can understand each other.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ava test --verbose --watch",
+    "remove-ava-cache": "npx ava --reset-cache",
     "dev": "backpack dev",
     "production": "backpack build && node ./build/main.js --production",
     "build": "backpack build",
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/unierr/nodejs-boilerplate#readme",
   "dependencies": {
+    "@babel/preset-stage-0": "^7.0.0",
     "async": "^2.6.2",
     "backpack-core": "^0.8.3",
     "bcrypt": "^3.0.4",
@@ -43,6 +45,14 @@
     "validator": "^10.11.0"
   },
   "devDependencies": {
-    "ava": "^1.2.1"
+    "@babel/register": "^7.0.0",
+    "ava": "^1.2.1",
+    "supertest": "^3.4.2"
+  },
+  "ava": {
+    "require": [
+      "@babel/register"
+    ],
+    "inherit": true
   }
 }

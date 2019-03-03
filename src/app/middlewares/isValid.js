@@ -74,14 +74,14 @@ export function req(requiredKeys, forbiddenKeys) {
 	var error = "";
 	if (missedKeys.length > 0)
 		error =
-			"The following keys are required in request body:\n " +
+			"The following keys are required in request body: " +
 			_.join(missedKeys, " , ") +
-			"\n";
+			"";
 	if (forbiddenKeys.length > 0)
 		error =
-			"The following keys are forbidden in request body:\n" +
+			"The following keys are forbidden in request body:" +
 			_.join(forbiddenKeys, " , ") +
-			"\n";
+			"";
 
 	if (error == "") return true;
 	res.validSend(400, {

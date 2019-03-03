@@ -6,6 +6,7 @@ import ExpressPlugins from './app/middlewares/ExpressPlugins';
 import bodyParser from 'body-parser';
 import path from 'path';
 import DATABASE from './app/config/db';
+
 //disabling console.log in production build
 if (process.env.projectMode === 'Production')
     console.log = function () { }
@@ -42,4 +43,6 @@ app.listen(port, (err) => {
         console.error(err)
     }
     console.log(`listening on port`, Number(port))
-})
+});
+
+export default app;

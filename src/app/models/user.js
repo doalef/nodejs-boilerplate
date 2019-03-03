@@ -16,7 +16,6 @@ userSchema.plugin(mongooseTimestamp);
 userSchema.virtual('password').set(async function (password) {
 	try {
 		return await Hash.updateOne({ user: this._id }, { user: this._id, hash: password }, { upsert: true });
-		
 	} catch (error) {
 		console.error(error)	
 	}
