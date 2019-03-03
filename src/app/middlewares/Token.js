@@ -4,7 +4,7 @@
  * 
  */
 import User from '../models/User';
-
+import jwt from 'jsonwebtoken';
 //TOKEN CONFIGURATION
 /**
  *  basedCollection: Name of the schema that token is generating from it.
