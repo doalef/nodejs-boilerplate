@@ -42,3 +42,33 @@ there are multiple built in middlewares mounted on express's request and respons
  2. `res.validSend(statusCode, data)` , used for sending responses back to the client and logs your status and data.  *NOTE: console.log is disabled in production mode*.
  3. `Auth` which performs authentication on your jwt, you can import it where ever you want in your routes as a middleware, it's located in `/src/app/middlewares/Auth.js`.
  4. `CORS` is handled by default in middlewares but you can customized it `/src/app/middlewares/CORS.js`
+
+### GLOBAL METHODS
+global method are defined inside `/src/globals/methods.js`. methods are accessible by using `global.methodName()`
+
+ 1. `validateMail`,validates email addresses, returns a `Boolean`
+ 2. `validatePhone`
+ 3. `digitSeperator` seperates digits by putting comma between them.
+ 4. `toFarsi` changes numbers to persian numbers.
+ 5. `dasher` replaces spaces with - , makes string url friendly
+ 6. `undasher` reverse dasher
+ 7. `chunkArray(array, chunk_size)`, chunks arrays.
+ 8. `getStringBetween(str, one, two)` returns the string between two given characters
+ 9. `getStringFrom(str, one)` returns the string after the given character.
+
+### DEPLOYMENT
+you can build your code bundle by running the command `npm run build`, the run the build file as you wish or you can directly run `npm run production` to build and run your project, note that in production build `console.log` is disabled and only `console.error` works in order to make your log file in production lighter, you can enable log by commenting out the following code in `/src/index.js`.
+`if (process.env.projectMode === 'Production')
+	console.log = function() {}`
+
+## TESTING
+nodejs-boilerplates uses [Ava](https://github.com/avajs/ava) for running tests and [Supertest](https://github.com/visionmedia/supertest#readme) for mocking and testing apis. test files are located inside test folder at the root of project, all files ending with `.test.js` are used for testing when test command is used.
+there are existing sample test inside `index.test.js` that test a couple apis.
+#### TEST COMMANDS
+
+ 1. `npm run test` runs test and keeps watching for changes in your code to run the tests again
+ 2. `npm run remove-ava-cache` removes ava's cache.
+
+
+### CREDITS
+this project is a wrap-around and maintained version of [mrTech's](https://github.com/itsmrTech) [backpack-bolierplate](https://github.com/itsmrTech/backpack-bolierplate)
