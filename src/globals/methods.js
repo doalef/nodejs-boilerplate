@@ -42,3 +42,24 @@ global['dasher'] = (str) => {
 global['undasher'] = (str) => {
     return str.replace("-", " ");
 }
+
+global['chunkArray'] = (myArray, chunk_size) => {
+    var results = [];
+    while (myArray.length) {
+        results.push(myArray.splice(0, chunk_size));
+    }
+    return results;
+}
+
+global['getStringBetween'] = (str, firstChar, secondChar) => {
+    return str.substring(
+        str.lastIndexOf(firstChar) + 1,
+        str.lastIndexOf(secondChar)
+    );
+}
+
+global['getStringFrom'] = (str, firstChar) => {
+    return str.substring(
+        str.lastIndexOf(firstChar) + 1,
+    );
+}
